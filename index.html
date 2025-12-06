@@ -2,21 +2,22 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <title>Centro di privacy – Accesso all’offerta Hondro Sol</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Comfort articolare quotidiano – Hondro Sol</title>
+
   <style>
     :root {
-      --bg-main: #020617;
-      --card-bg: #020617;
-      --modal-bg: #020617;
+      --bg-page: #050816;
+      --bg-card: #0b1020;
+      --bg-soft: #111827;
       --accent: #22c55e;
-      --accent-dark: #16a34a;
-      --text-main: #e5e7eb;
+      --accent-soft: rgba(34, 197, 94, 0.15);
+      --text-main: #f9fafb;
       --text-muted: #9ca3af;
-      --text-soft: #6b7280;
-      --border-subtle: rgba(148, 163, 184, 0.35);
-      --shadow-soft: 0 28px 80px rgba(15, 23, 42, 0.85);
-      --radius-lg: 22px;
+      --border-subtle: rgba(148,163,184,0.35);
+      --shadow-soft: 0 24px 60px rgba(15,23,42,0.7);
+      --radius-lg: 18px;
+      --radius-md: 12px;
       --radius-pill: 999px;
       --transition-fast: 0.18s ease-out;
     }
@@ -28,378 +29,597 @@
     }
 
     body {
-      min-height: 100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #0b1220 0, #020617 55%, #000 100%);
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #020617 100%);
       color: var(--text-main);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
+      min-height: 100vh;
     }
 
-    .page-shell {
-      position: relative;
-      width: 100%;
-      max-width: 1240px;
+    .page {
+      max-width: 1120px;
       margin: 0 auto;
+      padding: 32px 16px 120px;
     }
 
-    .official-header {
-      text-align: center;
-      margin-bottom: 32px;
-      color: var(--text-soft);
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .official-header span {
-      display: block;
-      margin-top: 6px;
-      font-weight: 500;
-      color: #a5b4fc;
-    }
-
-    .official-card {
-      max-width: 520px;
-      margin: 0 auto 40px auto;
-      padding: 16px 18px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95));
-      border: 1px solid rgba(148, 163, 184, 0.35);
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 24px;
       gap: 12px;
     }
 
-    .official-card-text {
-      font-size: 13px;
+    header .tag {
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    header .tag span.flag {
+      font-size: 16px;
+    }
+
+    header .badge {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148,163,184,0.45);
       color: var(--text-muted);
     }
 
-    .official-card-text strong {
-      color: #e5e7eb;
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 20px;
     }
 
-    .official-card a {
-      font-size: 13px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      text-decoration: none;
-      color: #e5e7eb;
-      background: rgba(15, 23, 42, 0.8);
-      transition: background var(--transition-fast), border-color var(--transition-fast),
-        transform var(--transition-fast);
+    @media (max-width: 880px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
-    .official-card a:hover {
-      background: rgba(30, 64, 175, 0.9);
-      border-color: #60a5fa;
-      transform: translateY(-1px);
-    }
-
-    .modal {
-      position: relative;
-      max-width: 620px;
-      margin: 0 auto;
-      padding: 26px 26px 24px;
+    .card {
+      background: radial-gradient(circle at top left, #111827 0, #020617 55%);
       border-radius: var(--radius-lg);
-      background: radial-gradient(circle at top left, #020617 0, #020617 40%, #020617 100%);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid rgba(148,163,184,0.35);
       box-shadow: var(--shadow-soft);
-      color: var(--text-main);
+      padding: 22px 22px 20px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 18px;
-    }
-
-    .modal-kicker {
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--text-soft);
-      margin-bottom: 6px;
-    }
-
-    .modal-title {
-      font-size: 22px;
-      line-height: 1.25;
-      font-weight: 650;
-      letter-spacing: 0.01em;
-    }
-
-    .modal-title span {
-      color: #bbf7d0;
-    }
-
-    .pill-badge {
-      font-size: 11px;
-      padding: 6px 10px;
-      border-radius: var(--radius-pill);
-      background: rgba(34, 197, 94, 0.08);
-      border: 1px solid rgba(34, 197, 94, 0.3);
+    .pill {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      color: #bbf7d0;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--text-muted);
+      font-size: 11px;
       margin-bottom: 10px;
     }
 
     .pill-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.25);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
     }
 
-    .close-btn {
-      border: none;
-      background: rgba(15, 23, 42, 0.6);
-      color: var(--text-soft);
-      border-radius: 999px;
-      width: 26px;
-      height: 26px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background var(--transition-fast), color var(--transition-fast),
-        transform var(--transition-fast);
-      flex-shrink: 0;
+    h1 {
+      font-size: clamp(24px, 3vw, 28px);
+      line-height: 1.25;
+      margin-bottom: 10px;
     }
 
-    .close-btn:hover {
-      background: rgba(30, 64, 175, 0.9);
-      color: #e5e7eb;
-      transform: translateY(-1px);
+    h1 span.accent {
+      color: var(--accent);
     }
 
-    .modal-body {
+    .subtitle {
       font-size: 14px;
       color: var(--text-muted);
-      line-height: 1.6;
+      margin-bottom: 14px;
+      max-width: 580px;
     }
 
-    .benefit-box {
-      margin-top: 14px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(148, 163, 184, 0.35);
+    .bullet-list {
+      list-style: none;
+      margin-bottom: 18px;
+      display: grid;
+      gap: 6px;
       font-size: 13px;
     }
 
-    .benefit-title {
-      color: #e5e7eb;
-      font-weight: 500;
-      margin-bottom: 6px;
-    }
-
-    .benefit-list {
-      list-style: none;
-      padding-left: 0;
-      margin: 4px 0 0 0;
-    }
-
-    .benefit-list li {
-      position: relative;
-      padding-left: 16px;
-      margin-bottom: 4px;
-    }
-
-    .benefit-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #22c55e;
-    }
-
-    .disclaimer {
-      margin-top: 10px;
-      font-size: 11px;
-      color: var(--text-soft);
-      line-height: 1.5;
-    }
-
-    .modal-footer {
-      margin-top: 18px;
+    .bullet-list li {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      align-items: flex-start;
+      gap: 8px;
+      color: var(--text-main);
     }
 
-    .cta-button {
-      width: 100%;
-      padding: 13px 16px;
-      border-radius: var(--radius-pill);
+    .bullet-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .btn-primary {
       border: none;
-      background: var(--accent);
-      color: #022c22;
-      font-weight: 600;
+      border-radius: var(--radius-pill);
+      padding: 11px 20px;
       font-size: 14px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 8px;
-      box-shadow: 0 18px 40px rgba(16, 185, 129, 0.55);
-      transition: background var(--transition-fast), transform var(--transition-fast),
-        box-shadow var(--transition-fast);
+      text-decoration: none;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+                  filter var(--transition-fast);
+      box-shadow: 0 18px 40px rgba(22, 163, 74, 0.45);
     }
 
-    .cta-button span {
-      font-size: 15px;
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+      box-shadow: 0 22px 55px rgba(22, 163, 74, 0.6);
     }
 
-    .cta-button small {
+    .btn-secondary {
+      border-radius: var(--radius-pill);
+      padding: 10px 16px;
+      border: 1px dashed rgba(148,163,184,0.55);
+      background: rgba(15,23,42,0.8);
+      color: var(--text-muted);
       font-size: 12px;
-      opacity: 0.9;
-    }
-
-    .cta-button:hover {
-      background: var(--accent-dark);
-      transform: translateY(-1.5px);
-      box-shadow: 0 22px 50px rgba(16, 185, 129, 0.7);
-    }
-
-    .secondary-link {
-      text-align: center;
-      font-size: 12px;
-      color: var(--text-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       cursor: pointer;
+      text-decoration: none;
+      transition: border-color var(--transition-fast), background var(--transition-fast),
+                  color var(--transition-fast);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(148,163,184,0.9);
+      background: rgba(15,23,42,0.95);
+      color: var(--text-main);
+    }
+
+    .disclaimer {
+      font-size: 10px;
+      color: var(--text-muted);
+      border-top: 1px dashed rgba(148,163,184,0.4);
+      padding-top: 10px;
+      margin-top: 8px;
+    }
+
+    /* Coluna lateral */
+    .side-card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top, #0f172a 0, #020617 70%);
+      border: 1px solid rgba(148,163,184,0.35);
+      padding: 18px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .side-header {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .side-price {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .side-box {
+      border-radius: var(--radius-md);
+      border: 1px dashed rgba(148,163,184,0.55);
+      padding: 10px 10px 9px;
+      background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(8,47,73,0.85));
+      font-size: 11px;
+      color: var(--text-main);
+    }
+
+    .side-list {
+      list-style: none;
+      display: grid;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .main-section {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 880px) {
+      .main-section {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .section-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148,163,184,0.35);
+      background: radial-gradient(circle at top left, #020617 0, #020617 50%);
+      padding: 18px 18px 16px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .section-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .section-list {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding-left: 18px;
+      display: grid;
+      gap: 6px;
+    }
+
+    footer {
+      margin-top: 24px;
+      font-size: 10px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* COOKIE BAR */
+    .cookie-bar {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background: #020617;
+      border-top: 1px solid rgba(148,163,184,0.35);
+      box-shadow: 0 -8px 30px rgba(15,23,42,0.7);
+      padding: 14px 16px;
+      display: flex;
+      justify-content: center;
+      z-index: 60;
+    }
+
+    .cookie-bar-inner {
+      max-width: 1120px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 3.2fr) auto;
+      gap: 14px;
+      align-items: center;
+      color: var(--text-main);
+      font-size: 12px;
+    }
+
+    @media (max-width: 720px) {
+      .cookie-bar-inner {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+      }
+    }
+
+    .cookie-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .cookie-text a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .cookie-text a:hover {
       text-decoration: underline;
-      text-decoration-style: dotted;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-      transition: color var(--transition-fast), opacity var(--transition-fast);
     }
 
-    .secondary-link:hover {
-      color: #e5e7eb;
-      opacity: 0.9;
+    .cookie-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
     }
 
-    .hidden {
+    .cookie-accept {
+      border-radius: var(--radius-pill);
+      padding: 9px 18px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      box-shadow: 0 10px 30px rgba(22,163,74,0.5);
+      white-space: nowrap;
+    }
+
+    .cookie-accept:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(22,163,74,0.7);
+    }
+
+    .cookie-decline {
+      border-radius: var(--radius-pill);
+      padding: 8px 14px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 12px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .cookie-decline:hover {
+      color: var(--text-main);
+      border-color: rgba(148,163,184,0.9);
+    }
+
+    .cookie-bar--hidden {
       display: none;
-    }
-
-    @media (max-width: 640px) {
-      body {
-        padding: 16px;
-      }
-
-      .modal {
-        padding: 20px 18px 18px;
-      }
-
-      .modal-title {
-        font-size: 19px;
-      }
-
-      .official-card {
-        flex-direction: column;
-        align-items: flex-start;
-      }
     }
   </style>
 </head>
+
 <body>
-  <div class="page-shell">
-    <!-- Cabeçalho simples da página de referência -->
-    <div class="official-header">
-      CENTRO DI PRIVACY · ITALIA
-      <span>Pagina ufficiale di riferimento: Hondro Sol – IT</span>
-    </div>
-
-    <!-- Cartão discreto apontando para a página oficial -->
-    <div class="official-card">
-      <div class="official-card-text">
-        <strong>Pagina ufficiale Hondro Sol</strong><br />
-        L’offerta completa, i prezzi e tutti i dettagli del prodotto sono disponibili
-        sulla pagina ufficiale del fornitore.
+  <div class="page">
+    <header>
+      <div class="tag">
+        <span class="flag">🇮🇹</span>
+        ARTICOLO INFORMATIVO · SOLO PER L’ITALIA
       </div>
-      <a href="https://5adb6f.asdnecfoqwq.cc/?target=-7EBNQCgQAAAfApAQDh5QABQEBEREKEQkKEQ1CEQ0SAAF_YWRjb21ibwEx&al=99599&ap=-1" target="_blank" rel="noopener">
-        Apri pagina ufficiale
-      </a>
-    </div>
+      <div class="badge">Prodotto per adulti · 40+</div>
+    </header>
 
-    <!-- Modal de cookies / gate de acesso -->
-    <div class="modal" id="cookie-modal">
-      <div class="modal-header">
-        <div>
-          <div class="modal-kicker">Centro di privacy · Italia</div>
-          <div class="pill-badge">
-            <span class="pill-dot"></span>
-            Accesso riservato – utenti in Italia
-          </div>
-          <h1 class="modal-title">
-            Prima di accedere all’offerta <span>Hondro Sol</span>…
-          </h1>
+    <main class="layout">
+      <!-- HERO / COLUNA PRINCIPAL -->
+      <section class="card">
+        <div class="pill">
+          <span class="pill-dot"></span>
+          Articolo informativo · Comfort articolare
         </div>
-        <button class="close-btn" id="close-modal" aria-label="Chiudi avviso">
-          ✕
-        </button>
-      </div>
 
-      <div class="modal-body">
-        Utilizziamo cookie e tecnologie simili per offrirti una navigazione
-        ottimizzata e mostrarti la pagina ufficiale con tutti i dettagli
-        disponibili oggi in Italia.
-        <div class="benefit-box">
-          <div class="benefit-title">Perché chiediamo il tuo consenso:</div>
-          <ul class="benefit-list">
-            <li>Offerta limitata: accesso preferenziale finché ci sono disponibilità.</li>
-            <li>Mostriamo prezzi e contenuti adattati al tuo Paese.</li>
-            <li>Miglioriamo la tua esperienza nelle visite future.</li>
-          </ul>
+        <h1>
+          Supporto quotidiano per il <span class="accent">comfort delle articolazioni</span>
+          con Hondro Sol spray
+        </h1>
+
+        <p class="subtitle">
+          Con l’età, molte persone iniziano a percepire rigidità e fastidi articolari,
+          soprattutto dopo una giornata intensa. In questa pagina riassumiamo le
+          informazioni principali su uno spray topico pensato per il comfort articolare:
+          <strong>Hondro Sol</strong>.
+        </p>
+
+        <ul class="bullet-list">
+          <li>
+            <span class="bullet-icon">✓</span>
+            <span>Formato spray pratico da applicare localmente sulla zona interessata.</span>
+          </li>
+          <li>
+            <span class="bullet-icon">✓</span>
+            <span>Pensato per adulti che desiderano un supporto quotidiano al benessere articolare.</span>
+          </li>
+          <li>
+            <span class="bullet-icon">✓</span>
+            <span>Uso cosmetico/topico: non sostituisce trattamenti medici prescritti.</span>
+          </li>
+        </ul>
+
+        <div class="cta-row">
+          <a
+            class="btn-primary"
+            href="https://5adb6f.asdnecfoqwq.cc/?target=-7EBNQCgQAAAfApAQDh5QABQEBEREKEQkKEQ1CEQ0SAAF_YWRjb21ibwEx&al=99599&ap=-1"
+            target="_blank" rel="noopener"
+          >
+            Vai all’offerta ufficiale Hondro Sol →
+          </a>
+
+          <a
+            class="btn-secondary"
+            href="https://5adb6f.asdnecfoqwq.cc/?target=-7EBNQCgQAAAfApAQDh5QABQEBEREKEQkKEQ1CEQ0SAAF_YWRjb21ibwEx&al=99599&ap=-1"
+            target="_blank" rel="noopener"
+          >
+            Leggi prezzo, condizioni e modalità di consegna
+          </a>
         </div>
 
         <p class="disclaimer">
-          Cliccando su <strong>“Accetta e continua”</strong> confermi di aver letto
-          questo avviso e accetti l’uso dei cookie secondo la nostra politica.
-          Il prodotto mostrato è un integratore alimentare e non sostituisce
-          consigli medici professionali.
+          Questo articolo è solo a scopo informativo e non sostituisce il parere del medico.
+          Hondro Sol è un prodotto topico/cosmetico. Non è destinato a diagnosticare,
+          trattare, curare o prevenire alcuna malattia. È consigliabile consultare
+          un professionista della salute in caso di dubbi, patologie pregresse o uso
+          di farmaci.
         </p>
+      </section>
+
+      <!-- COLUNA LATERAL -->
+      <aside class="side-card">
+        <div class="side-header">
+          <span>Informazioni rapide su Hondro Sol</span>
+          <span class="side-price">Offerta partner · Italia</span>
+        </div>
+
+        <div class="side-box">
+          <strong>Hondro Sol – IT</strong><br />
+          Spray topico a base di ingredienti selezionati, pensato per adulti (40+)
+          che desiderano prendersi cura delle articolazioni con un gesto quotidiano.
+          Le condizioni complete di acquisto e consegna sono indicate solo nella
+          pagina ufficiale del partner.
+        </div>
+
+        <ul class="side-list">
+          <li>Utilizzo topico, solo per uso esterno.</li>
+          <li>Destinato a un pubblico adulto.</li>
+          <li>Leggere sempre le avvertenze riportate dal produttore.</li>
+          <li>Disponibilità e eventuale pagamento alla consegna secondo il partner.</li>
+        </ul>
+
+        <a
+          class="btn-primary"
+          style="justify-content:center; margin-top:4px;"
+          href="https://5adb6f.asdnecfoqwq.cc/?target=-7EBNQCgQAAAfApAQDh5QABQEBEREKEQkKEQ1CEQ0SAAF_YWRjb21ibwEx&al=99599&ap=-1"
+          target="_blank" rel="noopener"
+        >
+          Apri la pagina ufficiale del partner
+        </a>
+      </aside>
+    </main>
+
+    <!-- SEZIONI APPROFONDIMENTO -->
+    <section class="main-section">
+      <article class="section-card">
+        <h2 class="section-title">
+          Perché, dopo i 40 anni, molte persone sentono le articolazioni più “rigide”?
+        </h2>
+        <p class="section-text">
+          Con il passare degli anni, è comune percepire una sensazione di rigidità
+          o pesantezza articolare. Entrano in gioco diversi fattori legati allo stile
+          di vita:
+        </p>
+        <ul class="section-list">
+          <li>Ore trascorse seduti in ufficio o in auto.</li>
+          <li>Poca attività fisica regolare e movimenti ripetitivi.</li>
+          <li>Stanchezza generale dopo la giornata lavorativa.</li>
+          <li>Carico maggiore su ginocchia, schiena, spalle e altre articolazioni.</li>
+        </ul>
+        <p class="section-text">
+          Per molti, la scelta passa da un approccio più completo: movimento moderato,
+          abitudini quotidiane più equilibrate e, quando indicato, l’uso di prodotti
+          topici pensati per favorire una sensazione di sollievo nella zona interessata.
+        </p>
+      </article>
+
+      <article class="section-card">
+        <h2 class="section-title">Come si inserisce Hondro Sol in questo contesto?</h2>
+        <p class="section-text">
+          Hondro Sol è presentato come uno spray topico che viene applicato direttamente
+          sulla zona cutanea interessata. Secondo le informazioni fornite dal partner,
+          l’obiettivo è offrire una sensazione di comfort e benessere locale.
+        </p>
+        <p class="section-text">
+          L’applicazione deve seguire le indicazioni riportate sulla confezione
+          e nell’informativa del produttore. Non sostituisce eventuali terapie
+          prescritte dal medico né una valutazione professionale in caso di dolore
+          persistente.
+        </p>
+        <p class="section-text">
+          Tutti i dettagli su ingredienti, modalità d’uso, avvertenze e condizioni
+          commerciali sono disponibili esclusivamente sulla pagina ufficiale del
+          partner, accessibile dal pulsante qui in alto.
+        </p>
+      </article>
+    </section>
+
+    <footer>
+      Materiale informativo indipendente. Non affiliato al Ministero della Salute
+      né ad enti pubblici. L’uso di questo sito implica l’accettazione dei termini
+      di utilizzo eventualmente indicati nella pagina ufficiale del partner.
+    </footer>
+  </div>
+
+  <!-- COOKIE BAR -->
+  <div class="cookie-bar" id="cookieBar">
+    <div class="cookie-bar-inner">
+      <div>
+        <div class="cookie-title">Consenso ai cookie</div>
+        <div class="cookie-text">
+          Utilizziamo cookie e tecnologie simili per analizzare il traffico anonimo di
+          questa pagina informativa e per reindirizzarti, se lo desideri, alla pagina
+          ufficiale del nostro partner in Italia. Per maggiori dettagli consulta
+          l’informativa del partner nella pagina di offerta.
+        </div>
       </div>
 
-      <div class="modal-footer">
-        <button class="cta-button" id="accept-btn">
-          <span>Accetta e continua</span>
-          <small>Vai subito all’offerta ufficiale Hondro Sol</small>
+      <div class="cookie-actions">
+        <button class="cookie-accept" id="cookieAccept">
+          Accetto e vado all’offerta
         </button>
-
-        <div class="secondary-link" id="continue-without">
+        <button class="cookie-decline" id="cookieDecline">
           Preferisco continuare senza accettare
-        </div>
+        </button>
       </div>
     </div>
   </div>
 
   <script>
-    const affiliateUrl = "https://5adb6f.asdnecfoqwq.cc/?target=-7EBNQCgQAAAfApAQDh5QABQEBEREKEQkKEQ1CEQ0SAAF_YWRjb21ibwEx&al=99599&ap=-1"; // TROCAR PELO SEU LINK
+    (function () {
+      const CONSENT_KEY = "hondro_sol_cookie_consent";
+      const bar = document.getElementById("cookieBar");
+      const acceptBtn = document.getElementById("cookieAccept");
+      const declineBtn = document.getElementById("cookieDecline");
+      const offerUrl = "https://5adb6f.asdnecfoqwq.cc/?target=-7EBNQCgQAAAfApAQDh5QABQEBEREKEQkKEQ1CEQ0SAAF_YWRjb21ibwEx&al=99599&ap=-1"; // coloque aqui o link de afiliado
 
-    document.getElementById("accept-btn").addEventListener("click", () => {
-      window.location.href = affiliateUrl;
-    });
+      function hideBar() {
+        if (bar) {
+          bar.classList.add("cookie-bar--hidden");
+        }
+      }
 
-    document.getElementById("close-modal").addEventListener("click", () => {
-      document.getElementById("cookie-modal").classList.add("hidden");
-    });
+      if (localStorage.getItem(CONSENT_KEY)) {
+        hideBar();
+      }
 
-    document.getElementById("continue-without").addEventListener("click", () => {
-      document.getElementById("cookie-modal").classList.add("hidden");
-    });
+      if (acceptBtn) {
+        acceptBtn.addEventListener("click", function () {
+          localStorage.setItem(CONSENT_KEY, "accepted");
+          window.location.href = offerUrl; // vai para a oferta
+        });
+      }
+
+      if (declineBtn) {
+        declineBtn.addEventListener("click", function () {
+          localStorage.setItem(CONSENT_KEY, "dismissed");
+          window.location.href = offerUrl; // também vai para a oferta
+        });
+      }
+    })();
   </script>
 </body>
 </html>
